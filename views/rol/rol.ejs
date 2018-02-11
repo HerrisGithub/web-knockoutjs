@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+</style>
+  </head>
+ 
+<body class="w3-theme-l5">
+<% include ../partial/navbar %>
+
+<!-- Page login Container -->
+<div id="registerContent" class="w3-container w3-content" style="max-width:1400px;margin-top:80px; min-height: 550px; text-align: center">    
+    <form action="/register" method="POST">
+    <div class="jumbotron">
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <h4>Buat Akun Baru</h4>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <!-- first name and last name -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" 
+                            class="form-control" 
+                            name="firstname" 
+                            pattern="[A-Za-z]{3,}",
+                            title="Hanya Boleh Isi Huruf",
+                            placeholder="Nama Depan" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" 
+                            name="lastname" ,
+                            pattern="[A-Za-z]{3,}",
+                            title="Hanya Boleh Isi Huruf",
+                            placeholder="Nama Belakang" required>
+                        </div>
+                    </div>
+                <!-- end firstname and last name -->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <p></p>
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                        <input type="text" 
+                        name="username" 
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",
+                        title="Minimum eight characters, at least one letter and one number",
+                        class="form-control" 
+                        placeholder="Username" required>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            
+            <p></p>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                        <input 
+                        type="email" name="email" 
+                        class="form-control" 
+                        placeholder="Email" required>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <p></p>
+            <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-4">
+                            <input 
+                            type="number" name="phone" 
+                            class="form-control" 
+                            placeholder="Nomor Telepon" required>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                
+            <p></p>
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                        <input type="text" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="Kata Sandi Baru" required>
+                </div>
+                <div class="col-md-1"></div>
+        </div>
+        <p></p>
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                        <input type="text" name="cpassword"  
+                        class="form-control" placeholder="Konfirmasi Kata Sandi" required>
+                </div>
+                <div class="col-md-1"></div>
+        </div>
+        <p></p>
+        <div class="row">
+                <div class="col-md-4"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2" style="text-align: left">
+                        <h4>Ulang Tahun</h4>
+                    </div>
+                    <div class="col-md-1"></div>
+            </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-3" style="padding-right: 0">
+                            <select class="form-control" name="date" data-bind=" options:optionsDay, 
+                            optionsText:'day', 
+                            optionsValue:'day', 
+                            value:date, event:{change:changeDate}" 
+                            required="required">
+                            </select>
+                        </div>
+                        <div class="col-md-3" style="padding-left: 0;padding-right: 0">
+                                <select name="month" class="form-control" data-bind="options:optionsMonth, 
+                                optionsText:'month', 
+                                optionsValue:'id', value:month, 
+                                event:{change:changeMonth}" required="required">
+                                    </select>
+                        </div>
+                        <div class="col-md-3" style="padding-left: 0;padding-right: 0">
+                                <select name="year" class="form-control" data-bind=" options:optionsYear, 
+                                optionsText:'year', 
+                                optionsValue:'year',
+                                value:year,event:{change:changeYear}" required="required">
+                                    </select>
+                            </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-12" style="text-align: left; color: red" data-bind="text:dateException">
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md-1"></div>
+        </div>
+        <p></p>
+        <div class="row">
+                <div class="col-md-4"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                        <div class="col-md-3" style="padding-right: 0">
+                            
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="jk"  value="male" required>
+                                    Laki - Laki
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3" style="padding-left: 0;padding-right: 0">
+                              
+                              <div class="radio">
+                                  <label>
+                                      <input type="radio" name="jk" value="female" required>
+                                      Perempuan
+                                  </label>
+                              </div>
+                              
+                            </div>
+                        </div>       
+                    </div>
+                    <div class="col-md-1"></div>
+            </div>
+            <p></p>
+            <div class="row">
+                    <div class="col-md-4"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                            <div class="col-md-3" style="padding-right: 0">
+                                <button type="submit" class="btn btn-success btn-lg" data-bind="enable:enableButton">Buat Akun</button>
+                            </div>
+                            </div>       
+                        </div>
+                        <div class="col-md-1"></div>
+                </div>
+    </div>
+</form>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<!-- end page login container -->
+
+
+
+
+
+<% include ../partial/footer %>
+<script src="/javascripts/viewmodel/util-date.js"></script>
+<script src="/javascripts/viewmodel/register.js"></script>
+
+</body>
+
+</html>
